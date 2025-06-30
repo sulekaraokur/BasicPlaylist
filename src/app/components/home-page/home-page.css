@@ -1,0 +1,172 @@
+.mood-card {
+  margin: 56px auto;
+  max-width: 700px;
+  height: 500px;
+  background: linear-gradient(135deg, #fbefff 70%, #e2f1ff 100%);
+  border-radius: 24px;
+  padding: 36px 28px 28px 28px;
+  box-shadow: 0 8px 40px 0 rgba(80,60,120,0.13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 360px;
+}
+.mood-card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #3b266b;
+  letter-spacing: -0.02em;
+}
+.emoji-row {
+  display: flex;
+  gap: 26px;
+  margin-bottom: 22px;
+}
+.emoji-btn {
+  font-size: 2.4rem;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  box-shadow: 0 1.5px 7px rgba(180,120,200,0.07);
+  cursor: pointer;
+  transition: transform 0.13s, box-shadow 0.13s, background 0.11s;
+}
+.emoji-btn:hover, .emoji-btn:focus {
+  background: #fff3fa;
+  transform: scale(1.14);
+  box-shadow: 0 4px 18px #dfb0e7a8;
+  outline: none;
+}
+.suggestion-area {
+  margin-bottom: 20px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.suggestion-title {
+  font-size: 1.09rem;
+  font-weight: 700;
+  color: #9a3ae5;
+  margin-bottom: 4px;
+}
+.song-suggestion {
+  width: 400px;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1.5px 9px rgba(140,100,160,0.08);
+  text-align: center;
+}
+.song-title {
+  font-size: 1.09rem;
+  font-weight: 600;
+  color: #3a225f;
+}
+.song-artist {
+  font-size: 0.96rem;
+  color: #8c72ad;
+}
+.feedback-msg {
+  color: #c83a9d;
+  font-size: 1.04rem;
+  text-align: center;
+}
+.actions-row {
+  margin-top: 18px;
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+}
+.action-btn {
+  font-size: 1rem;
+  padding: 7px 18px;
+  border-radius: 17px;
+  background: #fff;
+  color: #5858a9;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 2px 10px #efbff899;
+  transition: background 0.14s, color 0.12s;
+  border: 1.5px solid #d9cafb;
+}
+.action-btn.secondary {
+  background: #fff;
+  color: #5858a9;
+  border: 1.5px solid #d9cafb;
+  box-shadow: none;
+  
+}
+.action-btn:hover {
+  background: linear-gradient(90deg, #e732ae 0%, #694c65 100%);
+  color: #fff;
+}
+
+.listen-btn {
+  border:1px solid gray;
+  margin-top: 9px;
+  display: inline-flex;
+  align-items: center;
+  background: #7f5df4;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #b6b2f77a;
+  font-size: 1.02rem;
+  gap: 6px;
+  transition: background 0.12s;
+}
+.listen-btn:hover {
+  background: #f54bc7;
+  color: #fff;
+}.add-btn {
+  border:1px solid gray;
+  margin-top: 9px;
+  display: inline-flex;
+  align-items: center;
+  background: #7f5df4;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #b6b2f77a;
+  font-size: 1.02rem;
+  gap: 6px;
+  transition: background 0.12s;
+}
+.add-btn:disabled {
+  background: #eaeaea;
+  color: #bbb;
+  cursor: not-allowed;
+}
+.add-btn:hover {
+   background: #f54bc7;
+  color: #fff;
+}
+
+.suggestion-actions-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.emoji-btn mat-icon {
+  font-size: 1.6rem;
+  color: #81125c; /* istediğin renk kodu */
+}
+
+.mat-mdc-snack-bar-container {
+  font-size: 1.08rem;
+  background: #3b266b;
+  color: #fff;
+  border-radius: 9px;
+}

@@ -1,0 +1,170 @@
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 32px 8px;
+}
+
+.song-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  min-height: 250px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(80,80,120,0.09);
+  padding: 18px 10px 14px 10px;
+  position: relative;
+  border: 1px solid #ececec;
+  transition: box-shadow 0.18s, transform 0.18s;
+  overflow: hidden;
+}
+
+.song-card:hover {
+  box-shadow: 0 6px 24px 0 rgba(80,80,120,0.16);
+  transform: translateY(-2px) scale(1.035);
+  z-index: 2;
+}
+
+.song-cover {
+  width: 92px;
+  height: 92px;
+  border-radius: 11px;
+  object-fit: cover;
+  box-shadow: 0 1.5px 7px rgba(60,60,99,0.08);
+  margin-bottom: 12px;
+  background: #f4f4f4;
+  border: 1px solid #eee;
+  display: block;
+}
+
+.song-title {
+  font-size: 1.03rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 5px 0 2px 0;
+  color: #273248;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-artist {
+  font-size: 0.97rem;
+  color: #9095b2;
+  text-align: center;
+  margin-bottom: 2px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-meta {
+  font-size: 0.92rem;
+  color: #585858;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+/* FAVORİ ve DELETE İKONUNU AYARLA */
+.favorite-star, .delete-btn {
+  position: absolute;
+  top: 10px;
+  font-size: 1.4rem;
+  z-index: 3;
+}
+
+.favorite-star {
+  right: 12px;
+  color: #ea41a3;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px #fff);
+}
+
+.delete-btn {
+  left: 12px;
+  background: transparent !important;
+  color: #b4b4c0 !important;
+  border-radius: 50%;
+  padding: 2px !important;
+  box-shadow: none;
+  transition: background 0.13s;
+}
+.delete-btn:hover {
+  background: #ffe7f4 !important;
+  color: #e85085 !important;
+}
+
+@media (max-width: 600px) {
+  .song-card {
+    width: 97vw;
+    max-width: 290px;
+  }
+  .song-grid {
+    gap: 14px;
+    padding: 20px 2px;
+  }
+}
+
+.removing{
+  border: 0.1px solid black;
+  background-color: rgb(224, 216, 220);
+  margin: 13px;
+}
+
+.favorite-btn .mat-icon {
+  color: #bbb;        /* Favori DEĞİLSE gri */
+  transition: color 0.13s;
+  font-size: 1.7rem;
+}
+.favorite-btn.active .mat-icon {
+  color: #f39c12;     /* Favori İSE altın sarısı */
+  text-shadow: 0 2px 8px #f4dd9e85;
+  font-size: 1.85rem;
+}
+.favorite-btn:hover .mat-icon {
+  color: #e67e22;
+}
+
+.emptyPage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    /* Canlı gradient yazı */
+    background: linear-gradient(45deg, #382f8f, #2641b9, #c43795, #334b6b);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    font-size: 1.8rem;
+    font-weight: bold;
+    animation: gradientMove 3s ease infinite;
+}
+
+.emptyPage::before {
+    content: "🎵";
+    display: block;
+    font-size: 3rem;
+    -webkit-text-fill-color: initial;
+    background: none;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}

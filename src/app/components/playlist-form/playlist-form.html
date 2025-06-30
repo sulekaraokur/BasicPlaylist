@@ -1,0 +1,59 @@
+<div class="form-center">
+  <mat-card class="p-4">
+
+    <!-- Aktif Playlist Yoksa -->
+    <ng-container *ngIf="!activePlaylist">
+      <mat-card-title>Create Your Playlist</mat-card-title>
+      <form #playlistForm="ngForm" (ngSubmit)="createPlaylist()" class="d-flex flex-column gap-3 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Playlist Name</mat-label>
+          <input matInput [(ngModel)]="playlistName" name="playlistName" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Playlist Description</mat-label>
+          <textarea matInput rows="2" [(ngModel)]="playlistDesc" name="playlistDesc"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!playlistForm.form.valid">
+          Create Playlist
+        </button>
+      </form>
+      <div class="info-msg mt-2">
+        🎵 To add songs, please create a playlist first!
+      </div>
+    </ng-container>
+
+    <!-- Aktif Playlist Varsa -->
+    <ng-container *ngIf="activePlaylist">
+      <div class="playlist-header mb-2">
+        <span class="playlist-title">🎧 Playlist: <b>{{ activePlaylist.name }}</b></span>
+        <button mat-stroked-button color="accent" class="ml-2" (click)="resetPlaylist()">New Playlist</button>
+      </div>
+      <mat-card-title>Add a New Song</mat-card-title>
+      <form (ngSubmit)="addSong()" #songForm="ngForm" class="d-flex flex-column gap-3 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Name of the song</mat-label>
+          <input matInput [(ngModel)]="newSong.title" name="title" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Singer</mat-label>
+          <input matInput [(ngModel)]="newSong.artist" name="artist" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Duration (ex: 3:45)</mat-label>
+          <input matInput [(ngModel)]="newSong.duration" name="duration" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Cover Page URL (optional)</mat-label>
+          <input matInput [(ngModel)]="newSong.coverUrl" name="coverUrl" />
+        </mat-form-field>
+        <mat-checkbox [(ngModel)]="newSong.isFavorite" name="isFavorite">
+          Favorites ♥️
+        </mat-checkbox>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!songForm.form.valid">
+          ADD
+        </button>
+      </form>
+    </ng-container>
+
+  </mat-card>
+</div>

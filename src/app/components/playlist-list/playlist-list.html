@@ -1,0 +1,31 @@
+<div class="emptyPage" *ngIf="playlists.length === 0" >
+  <span class="mat-title" routerLink="/add" style="cursor: pointer;"> No Added Songs Here!</span>
+</div>
+
+<div class="playlist-list">
+  <mat-card *ngFor="let playlist of playlists" class="playlist-card">
+    <!-- Sağ üst köşeye delete ikonu -->
+    <button mat-icon-button class="playlist-delete-btn" (click)="deletePlaylist(playlist.id)" aria-label="Sil">
+      <mat-icon>delete</mat-icon>
+    </button>
+   <img class="playlist-cover"
+     [src]="
+       playlist.coverUrl && playlist.coverUrl.trim() !== ''
+         ? playlist.coverUrl
+         : (playlist.songs.length > 0
+              ? playlist.songs[0].coverUrl || 'assets/default-cover.jpg'
+              : 'assets/default-cover.jpg'
+           )
+     "
+     alt="Playlist Cover" />
+    <mat-card-title>{{ playlist.name }}</mat-card-title>
+    <mat-card-content>
+      {{ playlist.description }}
+      <br>
+      <b>{{ playlist.songs.length }}</b> şarkı
+    </mat-card-content>
+    <button mat-button color="primary" [routerLink]="['/playlist', playlist.id]">
+      Detayları Gör
+    </button>
+  </mat-card>
+</div>

@@ -1,0 +1,142 @@
+.playlist-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  justify-content: center;
+  padding: 28px 0 38px 0;
+}
+
+.playlist-card {
+  width: 230px;
+  min-height: 175px;
+  background: linear-gradient(120deg, #ecedfd 60%, #fde5fa 100%);
+  border-radius: 22px;
+  box-shadow: 0 6px 30px 0 rgba(94, 79, 176, 0.11);
+  padding: 24px 18px 17px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  transition: transform 0.14s, box-shadow 0.14s;
+  cursor: pointer;
+  border: 1.5px solid #ede5f7;
+  overflow: hidden;
+}
+
+.playlist-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 16px 36px 0 #b5a2e72a;
+  background: linear-gradient(120deg, #f0effd 60%, #ffe2fa 100%);
+}
+
+.playlist-cover {
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f9e6ff 40%, #bacdff 100%);
+  margin-bottom: 16px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px #d6c4ec55;
+  display: block;
+  border: 1px solid #eee;
+}
+
+mat-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c295c;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+mat-card-content {
+  font-size: 1.01rem;
+  color: #6b4574;
+  margin-bottom: 16px;
+  min-height: 36px;
+}
+
+.playlist-song-count {
+  color: #673474;
+  font-size: 0.97rem;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.playlist-detail-btn {
+  align-self: flex-end;
+  margin-top: auto;
+  background: linear-gradient(90deg, #f54bc7 0%, #994985 100%);
+  color: #fff !important;
+  border-radius: 15px;
+  padding: 5px 18px;
+  font-size: 1.01rem;
+  font-weight: 600;
+  box-shadow: 0 1.5px 9px #c6a5e77a;
+  transition: background 0.14s;
+  text-transform: none;
+}
+
+.playlist-detail-btn:hover {
+  background: linear-gradient(90deg, #1b1a27 0%, #881b8b 100%);
+  color: #fff !important;
+}
+
+@media (max-width: 700px) {
+  .playlist-list {
+    gap: 16px;
+  }
+  .playlist-card {
+    width: 92vw;
+    max-width: 360px;
+    min-width: 160px;
+  }
+}
+
+.emptyPage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    /* Canlı gradient yazı */
+    background: linear-gradient(45deg, #382f8f, #2641b9, #c43795, #334b6b);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    font-size: 1.8rem;
+    font-weight: bold;
+    animation: gradientMove 3s ease infinite;
+}
+
+.emptyPage::before {
+    content: "🎵";
+    display: block;
+    font-size: 3rem;
+    -webkit-text-fill-color: initial;
+    background: none;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.playlist-cover{
+   width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 13px;
+  margin: 0 auto 13px auto;   /* Sadece bu satır yeter! */
+  display: block;
+}

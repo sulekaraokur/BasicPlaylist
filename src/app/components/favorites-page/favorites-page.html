@@ -1,0 +1,24 @@
+<div class="emptyPage" *ngIf="favoriteSongs.length === 0" >
+  <span class="mat-title" routerLink="/songs" style="cursor: pointer;"> No Favorite Song Here!</span>
+</div>
+<div class="song-grid">
+  <mat-card *ngFor="let song of favoriteSongs" class="song-card">
+    <img [src]="song.coverUrl || 'default-cover.jpg'" class="song-cover" alt="Kapak" />
+    <!-- <button mat-icon-button class="delete-btn" (click)="deleteSong(song.id)" aria-label="Sil">
+      <mat-icon>delete</mat-icon>
+    </button> -->
+    <!-- <span *ngIf="song.isFavorite" class="favorite-star">★</span> -->
+    <div class="song-title">{{ song.title }}</div>
+    <div class="song-artist">{{ song.artist }}</div>
+    <div class="song-meta">{{ song.duration }}</div>
+     <!-- <button class="removing" mat-button color="warn" (click)="removeFromFavorites(song.id)">
+      Remove From Favorites
+  </button> -->
+
+  <button mat-icon-button class="favorite-btn" (click)="toggleFavorite(song)" [ngClass]="{'active': song.isFavorite}" aria-label="Favori">
+  <mat-icon>
+    {{ song.isFavorite ? 'star' : 'star_border' }}
+  </mat-icon>
+</button>
+  </mat-card>
+</div>

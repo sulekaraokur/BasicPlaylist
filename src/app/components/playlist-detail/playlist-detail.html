@@ -1,0 +1,81 @@
+<ng-container *ngIf="playlist; else notFound">
+  <div class="playlist-header">
+    <div class="cover-edit-wrapper">
+    <img
+  class="playlist-detail-cover"
+  [src]="
+    playlist!.coverUrl && playlist.coverUrl.trim() !== '' 
+      ? playlist.coverUrl 
+      : (
+          playlist!.songs.length && playlist.songs[0]!.coverUrl
+            ? playlist.songs[0].coverUrl
+            : 'assets/default-cover.jpg'
+        )
+  "
+  alt="Cover"
+  (error)="setDefaultCover($event)"
+/>
+      <button
+        mat-icon-button
+        class="edit-cover-btn"
+        (click)="editingCover = true"
+        aria-label="Edit Cover"
+        *ngIf="!editingCover"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <!-- Edit Mode (input) -->
+      <div *ngIf="editingCover" class="cover-edit-input">
+        <input
+          type="text"
+          [(ngModel)]="newCoverUrl"
+          placeholder="Image URL..."
+          class="cover-url-input"
+        />
+        <button mat-button color="primary" (click)="updateCoverUrl()">Kaydet</button>
+        <button mat-button color="warn" (click)="editingCover=false">İptal</button>
+      </div>
+    </div>
+    <div class="playlist-info">
+      <div class="playlist-title">{{ playlist!.name }}</div>
+      <div class="playlist-description">{{ playlist!.description }}</div>
+      <div class="playlist-meta">
+        <mat-icon inline>library_music</mat-icon>
+        {{ playlist!.songs.length || 0 }} şarkı
+      </div>
+    </div>
+  </div>
+
+  <!-- Şarkı listesi -->
+  <div class="song-grid">
+    <mat-card *ngFor="let song of playlist?.songs" class="song-card">
+      <img [src]="song.coverUrl || 'assets/default-cover.png'" class="song-cover" alt="Cover" />
+     
+      <button mat-icon-button class="delete-btn" (click)="deleteSong(song.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <div class="song-title">{{ song.title }}</div>
+      <div class="song-artist">{{ song.artist }}</div>
+      <div class="song-meta">{{ song.duration }}</div>
+       <button mat-icon-button 
+              class="favorite-btn" 
+              [class.active]="song.isFavorite"
+              (click)="toggleFavorite(song)">
+        <mat-icon>{{ song.isFavorite ? 'star' : 'star_border' }}</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+
+  <div *ngIf="(playlist?.songs?.length || 0) === 0" class="emptyPage">
+    <span>Henüz bu playlist’te şarkı yok! 🎵</span>
+    <br>
+    <a routerLink="/add" class="add-song-link">Şarkı ekle →</a>
+  </div>
+</ng-container>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <mat-icon>error_outline</mat-icon>
+    <span>Playlist bulunamadı.</span>
+  </div>
+</ng-template>

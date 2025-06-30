@@ -1,0 +1,35 @@
+<div class="mood-card">
+  <h2>How U Feeling Today ?</h2>
+  <div class="emoji-row">
+    <button class="emoji-btn" (click)="recommend('happy')" aria-label="Mutlu" title="Happy"><mat-icon fontIcon="sentiment_satisfied_alt"></mat-icon></button>
+    <button class="emoji-btn" (click)="recommend('chill')" aria-label="Chill" title="Chill"> <mat-icon fontIcon="self_improvement"></mat-icon></button>
+    <button class="emoji-btn" (click)="recommend('sad')" aria-label="Duygusal" title="Emotional"> <mat-icon fontIcon="sentiment_very_dissatisfied"></mat-icon></button>
+  </div>
+  <div class="suggestion-area">
+    <ng-container *ngIf="recommendedSong; else noSong">
+      <div class="suggestion-title">Our Suggestions Only for You:</div>
+      <div class="song-suggestion">
+        <div class="song-title">{{ recommendedSong.title }}</div>
+        <div class="song-artist">{{ recommendedSong.artist }}</div>
+        <!-- YENİ SATIR -->
+        <div class="suggestion-actions-row">
+          <a [href]="recommendedSong.url" target="_blank" rel="noopener" class="listen-btn">
+            <mat-icon>headphones</mat-icon> Listen
+          </a>
+          <button mat-stroked-button color="primary" class="add-btn"
+            (click)="addRecommendedSongToPlaylist()"
+            [disabled]="isSongInActivePlaylist(recommendedSong)">
+            + Add to My Playlist
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noSong>
+      <div class="feedback-msg">{{ feedbackMsg }}</div>
+    </ng-template>
+  </div>
+  <div class="actions-row">
+    <a routerLink="/add" class="action-btn">Add Your Songs→</a>
+    <a routerLink="/songs" class="action-btn secondary">Display All Songs →</a>
+  </div>
+</div>
